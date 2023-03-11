@@ -56,9 +56,34 @@
         previewEl.height = 16
 
         var xs = x_spreadsheet('#x-spreadsheet-demo', {
-          showToolbar: true,
+          // 修改x-spreadsheet默认配置
+          showToolbar: true,  // 隐藏顶部工具栏
           showGrid: true,
-          showBottomBar: true,
+          showBottomBar: true, // 隐藏底部工具栏
+          view: {
+            // 设置表格宽高
+            height: () => 500,
+            width: () => 500,
+          },
+          // 设置行数
+          row: {
+            len: 50,
+            height: 30,
+          },
+          // 设置列数
+          col: {
+            len: 26,
+            width: 100,
+            indexWidth: 40, //行数索引宽度
+            minWidth: 60,
+          },
+          // 修改字体的背景颜色和内容
+          style: {
+            // 字体颜色框背景 --- 单元格存在内容时改变颜色
+            bgcolor: "#94d1fa",
+            // 字体居中
+            align: "center",
+          },
           extendToolbar: {
             left: [
               {
