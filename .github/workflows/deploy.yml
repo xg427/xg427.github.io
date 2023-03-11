@@ -22,6 +22,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node: [14.x, 16.x]
+        max-keep: 3 # 只保留最近5个运行结果
   # Single deploy job since we're just deploying
   deploy:
     environment:
