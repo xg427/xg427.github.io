@@ -1,15 +1,27 @@
 {
-    "name": "GitHub Actions Demo",
-    "onCreateCommand": ".devcontainer/setup.sh",
-    "customizations": {
-        "codespaces": {
-          "openFiles": []  
-        },
-        "vscode": {
-          "extensions": [
-            "${containerWorkspaceFolder}/.devcontainer/extensions/github-actions-demo-0.0.55.vsix",
-            "redhat.vscode-yaml"
-          ]
-        }
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "hostRequirements": {
+    "cpus": 4
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "npm install",
+  "postCreateCommand": "",
+  "postAttachCommand": {
+    "server": "npm run dev"
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "src/index.js",
+        "src/routes/home/index.js"
+      ]
     }
+  },
+  "portsAttributes": {
+    "8080": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "forwardPorts": [8080]
 }
