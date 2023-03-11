@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[311],{899:(s,c,e)=>{e.r(c),e.d(c,{default:()=>h});const t="home__D7j_x",a="octocat__y7rYH",n="heart__YC2Ob";var r=e(797);function h(){return(0,r.BX)("div",{class:t,children:[(0,r.BX)("h1",{children:["GitHub Codespaces ",(0,r.tZ)("span",{class:n,children:"♥️"})," Preact"]}),(0,r.tZ)("img",{src:"/assets/Octocat.png",alt:"Mona",class:a}),(0,r.tZ)("p",{children:"This is the Home component."})]})}}}]);
+//# sourceMappingURL=route-home.chunk.2ec17.js.map
