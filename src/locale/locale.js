@@ -2,7 +2,7 @@
 import en from './en';
 import cn from './zh-cn';
 
-// Defines the fallback language as English
+// Defines the fallback language as Chinese
 let $languages = ['cn'];
 const $messages = {
   cn,
