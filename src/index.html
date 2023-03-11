@@ -215,6 +215,55 @@
       <a target="_blank" href="https://github.com/features/codespaces" class="btn btn-secondary">Codespaces</a>
     </p>
   </div>
+
+  <!-- 在 JavaScript 中定义放礼花的函数 -->
+  <script>
+    function fireworks() {
+      // 创建一个 <div> 元素来容纳礼花效果
+      const fireworks = document.createElement("div");
+      fireworks.classList.add("fireworks");
+
+      // 将礼花效果添加到页面中
+      document.body.appendChild(fireworks);
+
+      // 在 2 秒后移除礼花效果
+      setTimeout(() => {
+        document.body.removeChild(fireworks);
+      }, 2000);
+    }
+
+    // 在页面加载后延迟 2 秒钟，然后自动显示礼花效果
+    setTimeout(() => {
+      fireworks();
+    }, 2000);
+  </script>
+
+  <!-- 在 CSS 中定义礼花效果的样式 -->
+  <style>
+    .fireworks {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      background-image: radial-gradient(circle at 50% 0%, #f00, #000);
+      transform: translate(-50%, -50%);
+      animation: fireworks 1s ease-in-out;
+    }
+
+    @keyframes fireworks {
+      from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+      }
+
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+
 </body>
 
 </html>
