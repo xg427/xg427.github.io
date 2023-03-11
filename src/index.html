@@ -55,21 +55,22 @@
     }, 2000);
   </script>
   <script>
-    setInterval(updateTime, 1000); // 每秒钟更新一次时间
+    function displayTime() {
+      let date = new Date();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
 
-    function updateTime() {
-      const now = new Date(); // 当前时间
-      const hours = padZero(now.getHours()); // 小时数
-      const minutes = padZero(now.getMinutes()); // 分钟数
-      const seconds = padZero(now.getSeconds()); // 秒数
-      const timeString = hours + ":" + minutes + ":" + seconds; // 格式化时间字符串
-      document.getElementById("time").textContent = timeString; // 更新显示
+      hours = (hours < 10) ? "0" + hours : hours;
+      minutes = (minutes < 10) ? "0" + minutes : minutes;
+      seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+      let time = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerText = time;
     }
 
-    function padZero(num) {
-      // 补零函数，将数字转换为两位数的字符串
-      return num.toString().padStart(2, "0");
-    }
+    setInterval(displayTime, 1000); // update time every second
   </script>
 </head>
 
@@ -89,18 +90,7 @@
       <a href="#contact">
         <li class="nav-link">Contact</li>
       </a>
-      <h5 id="time">
-        <style>
-          /* 只将 h5 元素的文本内容设置为等宽字体 */
-          body {
-            font-family: sans-serif;
-          }
-
-          #time {
-            font-family: "Courier New", Courier, monospace;
-          }
-        </style>
-      </h5>
+      <div id="clock" style="width: 200px;"></div>
     </ul>
   </div>
 
