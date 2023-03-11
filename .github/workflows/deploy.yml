@@ -30,22 +30,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Install Dependencies
-      run: npm install
-
+        run: npm install
       - name: Build Preact Application
-      run: npm run build
-
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v2
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload the source folder
           path: './build'
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
