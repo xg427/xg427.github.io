@@ -7,32 +7,32 @@
   <title>Portfolio Template</title>
   <link rel="stylesheet" href="./styles/font/font.css" />
   <link rel="stylesheet" href="./styles/styles.css" />
-  
-<!-- 在 CSS 中定义礼花效果的样式 -->
-<style>
-  .fireworks {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    background-image: radial-gradient(circle at 50% 0%, #f00, #000);
-    transform: translate(-50%, -50%);
-    animation: fireworks 1s ease-in-out;
-  }
 
-  @keyframes fireworks {
-    from {
-      transform: translate(-50%, -50%) scale(0.5);
-      opacity: 0;
+  <!-- 在 CSS 中定义礼花效果的样式 -->
+  <style>
+    .fireworks {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      height: 100px;
+      background-image: radial-gradient(circle at 50% 0%, #f00, #000);
+      transform: translate(-50%, -50%);
+      animation: fireworks 1s ease-in-out;
     }
 
-    to {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
+    @keyframes fireworks {
+      from {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+      }
+
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
     }
-  }
-</style>
+  </style>
   <!-- 在 JavaScript 中定义放礼花的函数 -->
   <script>
     function fireworks() {
@@ -54,6 +54,23 @@
       fireworks();
     }, 2000);
   </script>
+  <script>
+    setInterval(updateTime, 1000); // 每秒钟更新一次时间
+
+    function updateTime() {
+      const now = new Date(); // 当前时间
+      const hours = padZero(now.getHours()); // 小时数
+      const minutes = padZero(now.getMinutes()); // 分钟数
+      const seconds = padZero(now.getSeconds()); // 秒数
+      const timeString = hours + ":" + minutes + ":" + seconds; // 格式化时间字符串
+      document.getElementById("time").textContent = timeString; // 更新显示
+    }
+
+    function padZero(num) {
+      // 补零函数，将数字转换为两位数的字符串
+      return num.toString().padStart(2, "0");
+    }
+  </script>
 </head>
 
 
@@ -72,6 +89,7 @@
       <a href="#contact">
         <li class="nav-link">Contact</li>
       </a>
+      <h2 id="time"></h2>
     </ul>
   </div>
 
