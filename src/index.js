@@ -17,19 +17,24 @@ class Spreadsheet {
     if (typeof selectors === 'string') {
       targetEl = document.querySelector(selectors);
     }
-    this.bottombar = this.options.showBottomBar ? new Bottombar(() => {
-      if (this.options.mode === 'read') return;
-      const d = this.addSheet();
-      this.sheet.resetData(d);
-    }, (index) => {
-      const d = this.datas[index];
-      this.sheet.resetData(d);
-    }, () => {
-      this.deleteSheet();
-    }, (index, value) => {
-      this.datas[index].name = value;
-      this.sheet.trigger('change');
-    }) : null;
+    this.bottombar = this.options.showBottomBar ? new Bottombar(
+      () => {
+        if (this.options.mode === 'read') return;
+        const d = this.addSheet();
+        this.sheet.resetData(d);
+      },
+      (index) => {
+        const d = this.datas[index];
+        this.sheet.resetData(d);
+      },
+      () => {
+        this.deleteSheet();
+      },
+      (index, value) => {
+        this.datas[index].name = value;
+        this.sheet.trigger('change');
+      }
+    ) : null;
     this.data = this.addSheet();
     const rootEl = h('div', `${cssPrefix}`)
       .on('contextmenu', evt => evt.preventDefault());
@@ -125,6 +130,15 @@ class Spreadsheet {
 
   static locale(lang, message) {
     locale(lang, message);
+  }
+
+  // 初始化选择的单元格信息
+  initSelectedCellInfo() {
+    const infoElem = document.createElement('div');
+    infoElem.id = 'selected-cell-info';
+    infoElem.style.padding = '10px';
+    infoElem.style.borderTop = '1px solid #ccc';
+    this.toolbar.el.appendChild(infoElem);
   }
 }
 
