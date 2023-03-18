@@ -1,56 +1,67 @@
-# Simple workflow for deploying static content to GitHub Pages
-# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# 定义工作流名称和触发条件
 name: Deploy static content to Pages
-
 on:
   push:
     branches:
       - preact
-  # Allows you to run this workflow manually from the Actions tab
+      - x-spreadsheet
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# 设置 Github Token 的权限
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# 设置并发执行的限制
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
+# 定义工作流的一个或多个 Job
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
+    # 定义部署的环境
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    # 定义 Job 运行的环境
     runs-on: ubuntu-latest
+    # 定义 Job 运行策略，限制并行执行的最大数量和保留的工作流运行结果数量
+    strategy:
+      matrix:
+        max-parallel: [1] # 最大并行执行数量
+        keep: [3]         # 保留的工作流运行结果数量
     steps:
+      # 从代码仓库中检出代码
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
+      # 配置 Node.js 运行环境
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
 
+      # 安装依赖
       - name: Install Dependencies
         run: npm install
 
+      # 构建应用程序
       - name: Build Preact Application
         run: npm run build
 
+      # 配置 Github Pages
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
+      # 上传构建好的文件到 Github Pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload the source folder
-          path: './build'
+          path: './dist'
   
+      # 部署到 Github Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
