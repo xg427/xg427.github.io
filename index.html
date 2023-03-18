@@ -126,16 +126,6 @@
             console.log(">>>> data is ", data);
           });
 
-        // 添加一个显示所选单元格数据的div元素
-        const cellDataEl = document.createElement("div");
-        xs.insertBefore(cellDataEl, xs.firstChild);
-
-        // 监听cell-selected事件，在点击单元格时更新显示数据的div元素
-        xs.on("cell-selected", (cell, ri, ci) => {
-          const data = cell.text || "";
-          cellDataEl.innerText = `当前所选单元格：(${ri}, ${ci})，内容为：${data}`;
-        });
-
         setTimeout(() => {
           // xs.loadData([{ rows }]);
           xs.cellText(14, 3, "cell-text").reRender();
