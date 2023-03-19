@@ -13,10 +13,11 @@ export default class CellInfo {
 
 
     sheet.on('cell-selected', (cell, ri, ci) => {
-      this.cellname.html(`${this.getCellName(ri, ci)}`);
       if (cell) {
+        this.cellname.html(`${this.getCellName(ri, ci)}`);
         this.celltext.html(`${cell.text}`);
       } else {
+        this.cellname.html('&nbsp;');
         this.celltext.html('&nbsp;');
       }
 
