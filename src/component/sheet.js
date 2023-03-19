@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* global window */
 import { h } from './element';
 import {
@@ -19,7 +20,7 @@ import SortFilter from './sort_filter';
 import { xtoast } from './message';
 import { cssPrefix } from '../config';
 import { formulas } from '../core/formula';
-
+import CellInfo from './cellinfo';
 /**
  * @desc throttle fn
  * @param func function
@@ -891,8 +892,10 @@ export default class Sheet {
     const { view, showToolbar, showContextmenu } = data.settings;
     this.el = h('div', `${cssPrefix}-sheet`);
     this.toolbar = new Toolbar(data, view.width, !showToolbar);
+    this.cellinfo = new CellInfo(this);
     this.print = new Print(data);
-    targetEl.children(this.toolbar.el, this.el, this.print.el);
+    targetEl.children(this.toolbar.el, this.cellinfo.el, this.el, this.print.el);
+    // targetEl.children(this.toolbar.el, this.el, this.print.el);
     this.data = data;
     // table
     this.tableEl = h('canvas', `${cssPrefix}-table`);

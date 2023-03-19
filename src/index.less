@@ -452,9 +452,7 @@ body {
 }
 
 .x-spreadsheet-item,
-.x-spreadsheet-header,
-{
-
+.x-spreadsheet-header {
   &.state {
     padding-left: 35px!important;
     position: relative;
@@ -558,7 +556,7 @@ body {
 
 .@{css-prefix}-toolbar, .@{css-prefix}-bottombar {
   height: 40px;
-  padding: 0 30px;
+  padding: 0 27px;
   text-align: left;
   background: #f5f6f7;
   display: flex;
@@ -1239,4 +1237,33 @@ form fieldset {
       top: -3 * @icon-size;
     }
   }
+}
+
+.@{css-prefix}-cellinfo {
+  // height:20px;
+  text-align: left;
+  padding: 5px 0px;
+  background: #f5f6f7;
+  display: flex;
+  position: relative;
+  border-bottom: 1px solid #e0e2e4;
+}
+
+.@{css-prefix}-cellinfo .@{css-prefix}-cellinfo-cellname{
+  text-align: center;
+  padding: 5px 0;
+  width: 60px;
+}
+
+.@{css-prefix}-cellinfo .@{css-prefix}-cellinfo-celltext{
+  text-align: left;
+  padding: 5px 5px;
+}
+.@{css-prefix}-cellinfo .@{css-prefix}-cellinfo-divider {
+  display: inline-block;
+  border-right: 1px solid #e0e2e4;
+  width: 0;
+  vertical-align: middle;
+  height: 18px;
+  margin: 5px 0px 0 0;
 }
