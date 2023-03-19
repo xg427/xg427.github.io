@@ -11,7 +11,7 @@
 
 > A web-based JavaScript spreadsheet
 
-Open your browser and visit http://xg427.github.io
+Open your browser and visit https://xg427.github.io
 
 <p align="center">
   <a href="https://github.com/myliang/x-spreadsheet">
