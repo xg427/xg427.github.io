@@ -11,6 +11,8 @@
 
 > A web-based JavaScript spreadsheet
 
+Open your browser and visit http://xg427.github.io
+
 <p align="center">
   <a href="https://github.com/myliang/x-spreadsheet">
     <img width="100%" src="https://raw.githubusercontent.com/myliang/x-spreadsheet/master/docs/demo.png">
@@ -148,7 +150,8 @@ new Spreadsheet(document.getElementById('xss-demo'));
 ```
 
 ## Features
-  - Undo & Redo
+
+* Undo & Redo
   - Paint format
   - Clear format
   - Format
